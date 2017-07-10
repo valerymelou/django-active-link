@@ -1,10 +1,12 @@
 # -*- coding: utf-8
 from __future__ import unicode_literals, absolute_import
 
-from django.conf.urls import url, include
+from django.conf.urls import url
+from django.views.generic import View
 
-from active_link.urls import urlpatterns as active_link_urls
 
 urlpatterns = [
-    url(r'^', include(active_link_urls, namespace='active_link')),
+    url(r'^simple/$', View.as_view(), name='simple'),
+    url(r'^simple/action/$', View.as_view(), name='simple-action'),
+    url(r'^other/action/$', View.as_view(), name='other-action'),
 ]
