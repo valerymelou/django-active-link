@@ -18,8 +18,8 @@ Documentation
 
 The full documentation is at https://django-active-link.readthedocs.io.
 
-Quickstart
-----------
+Quick start
+-----------
 
 Install Django Active Link::
 
@@ -35,8 +35,6 @@ Add it to your `INSTALLED_APPS`:
         ...
     )
 
-**IMPORTANT**: Django Active Link requires that the current request object is available in your template's context. This means you must be using a `RequestContext` when rendering your template, and `django.core.context_processors.request` must be in your `TEMPLATE_CONTEXT_PROCESSORS` setting. See https://docs.djangoproject.com/en/dev/ref/templates/api/#subclassing-context-requestcontext for more information.
-
 To use the `active_link` template tag you need to load `active_link_tags` templatetags library:
 
 .. code-block:: html
@@ -49,9 +47,46 @@ To add an `active` CSS class to a link when the request path matches a given vie
 
     <a href="{% url 'view-name' %}" class="{% active_link 'view-name' %}">Menu item</a>
 
+You can also use a custom CSS class:
+
+.. code-block:: html
+
+    <a href="{% url 'view-name' %}" class="{% active_link 'view-name' 'custom-class' %}">Menu item</a>
+
+or:
+
+.. code-block:: html
+
+    <a href="{% url 'view-name' %}" class="{% active_link 'view-name' css_class='custom-class' %}">Menu item</a>
+
+By default `active_link` will not perform a strict match. If you want to add the active class pass the `strict` argument to the tag:
+
+.. code-block:: html
+
+    <a href="{% url 'view-name' %}" class="{% active_link 'view-name' True %}">Menu item</a>
+
+or:
+
+.. code-block:: html
+
+    <a href="{% url 'view-name' %}" class="{% active_link strict=True %}">Menu item</a>
+
 Replace `view-name` with the name of your view (including namespaces).
 
+Settings
+--------
+You can override the default active class and strict mode with the settings `ACTIVE_LINK_CSS_CLASS` and `ACTIVE_LINK_STRICT`.
+
+===================== ==================================================== =============
+Key                   Description                                          Default Value
+===================== ==================================================== =============
+ACTIVE_LINK_CSS_CLASS Active class to use.                                 `active`
+ACTIVE_LINK_STRICT    Designates whether to perform a strict match or not. `False`
+===================== ==================================================== =============
+
 For more usage examples, please check the full documentation at https://django-active-link.readthedocs.io.
+
+**IMPORTANT**: Django Active Link requires that the current request object is available in your template's context. This means you must be using a `RequestContext` when rendering your template, and `django.core.context_processors.request` must be in your `TEMPLATE_CONTEXT_PROCESSORS` setting. See https://docs.djangoproject.com/en/dev/ref/templates/api/#subclassing-context-requestcontext for more information.
 
 TODO
 ----

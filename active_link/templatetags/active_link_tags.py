@@ -1,11 +1,12 @@
 from django import template
+from django.conf import settings
 from django.core.urlresolvers import reverse
 
 register = template.Library()
 
 
 @register.simple_tag(takes_context=True)
-def active_link(context, viewname, css_class='active', strict=False):
+def active_link(context, viewname, css_class=None, strict=None):
     """
     Renders the given CSS class if the request path matches the path of the view.
     :param context: The context where the tag was called. Used to access the request object.
@@ -14,6 +15,12 @@ def active_link(context, viewname, css_class='active', strict=False):
     :param strict: If True, the tag will perform an exact match with the request path.
     :return:
     """
+    if css_class is None:
+        css_class = getattr(settings, 'ACTIVE_LINK_CSS_CLASS', 'active')
+
+    if strict is None:
+        strict = getattr(settings, 'ACTIVE_LINK_STRICT', False)
+
     request = context.get('request')
     if request is None:
         # Can't work without the request object.

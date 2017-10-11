@@ -1,14 +1,14 @@
-from django.test import TestCase
+from django.test import TestCase, override_settings
 from django.template import Context, Template
 from django.test.client import RequestFactory
 
 
-class TestActiveLinkTags(TestCase):
+class TestActiveLink(TestCase):
 
     def setUp(self):
         self.client = RequestFactory()
 
-    def test_active_link_no_request(self):
+    def test_no_request(self):
         template = Template("""
             {% load active_link_tags %}
             {% active_link 'simple' %}
@@ -17,7 +17,7 @@ class TestActiveLinkTags(TestCase):
         html = template.render(context)
         assert 'active' not in html
 
-    def test_active_link_match_defaults(self):
+    def test_match_defaults(self):
         template = Template("""
             {% load active_link_tags %}
             {% active_link 'simple' %}
@@ -26,7 +26,7 @@ class TestActiveLinkTags(TestCase):
         html = template.render(context)
         assert 'active' in html
 
-    def test_active_link_match_not_strict(self):
+    def test_match_not_strict(self):
         template = Template("""
             {% load active_link_tags %}
             {% active_link 'simple' %}
@@ -35,7 +35,7 @@ class TestActiveLinkTags(TestCase):
         html = template.render(context)
         assert 'active' in html
 
-    def test_active_link_no_match_not_strict(self):
+    def test_no_match_not_strict(self):
         template = Template("""
             {% load active_link_tags %}
             {% active_link 'simple-action' %}
@@ -44,7 +44,7 @@ class TestActiveLinkTags(TestCase):
         html = template.render(context)
         assert 'active' not in html
 
-    def test_active_link_match_strict(self):
+    def test_match_strict(self):
         template = Template("""
             {% load active_link_tags %}
             {% active_link 'simple-action' strict=True %}
@@ -53,7 +53,7 @@ class TestActiveLinkTags(TestCase):
         html = template.render(context)
         assert 'active' in html
 
-    def test_active_link_no_match_strict(self):
+    def test_no_match_strict(self):
         template = Template("""
             {% load active_link_tags %}
             {% active_link 'simple-action' strict=True %}
@@ -62,7 +62,7 @@ class TestActiveLinkTags(TestCase):
         html = template.render(context)
         assert 'active' not in html
 
-    def test_active_link_custom_class(self):
+    def test_custom_class(self):
         template = Template("""
             {% load active_link_tags %}
             {% active_link 'simple' 'my-active-class' %}
@@ -70,3 +70,23 @@ class TestActiveLinkTags(TestCase):
         context = Context({'request': self.client.get('/simple/')})
         html = template.render(context)
         assert 'my-active-class' in html
+
+    @override_settings(ACTIVE_LINK_CSS_CLASS='my-active-class')
+    def test_settings_css_class(self):
+        template = Template("""
+            {% load active_link_tags %}
+            {% active_link 'simple' %}
+        """)
+        context = Context({'request': self.client.get('/simple/')})
+        html = template.render(context)
+        assert 'my-active-class' in html
+
+    @override_settings(ACTIVE_LINK_STRICT=True)
+    def test_settings_strict(self):
+        template = Template("""
+            {% load active_link_tags %}
+            {% active_link 'simple-action' %}
+        """)
+        context = Context({'request': self.client.get('/simple/')})
+        html = template.render(context)
+        assert 'active' not in html
