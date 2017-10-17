@@ -35,13 +35,13 @@ Add it to your `INSTALLED_APPS`:
         ...
     )
 
-To use the `active_link` template tag you need to load `active_link_tags` templatetags library:
+To use the ``active_link`` template tag you need to load ``active_link_tags`` templatetags library:
 
 .. code-block:: html
 
     {% load active_link_tags %}
 
-To add an `active` CSS class to a link when the request path matches a given view just do something like this.
+To add an ``active`` CSS class to a link when the request path matches a given view just do something like this.
 
 .. code-block:: html
 
@@ -59,23 +59,17 @@ or:
 
     <a href="{% url 'view-name' %}" class="{% active_link 'view-name' css_class='custom-class' %}">Menu item</a>
 
-By default `active_link` will not perform a strict match. If you want to add the active class pass the `strict` argument to the tag:
-
-.. code-block:: html
-
-    <a href="{% url 'view-name' %}" class="{% active_link 'view-name' True %}">Menu item</a>
-
-or:
+By default ``active_link`` will not perform a strict match. If you want to add the ``active`` class only in case of a strict match pass the ``strict`` argument to the tag:
 
 .. code-block:: html
 
     <a href="{% url 'view-name' %}" class="{% active_link strict=True %}">Menu item</a>
 
-Replace `view-name` with the name of your view (including namespaces).
+Replace ``view-name`` with the name of your view (including namespaces).
 
 Settings
 --------
-You can override the default active class and strict mode with the settings `ACTIVE_LINK_CSS_CLASS` and `ACTIVE_LINK_STRICT`.
+You can override the default active class and strict mode with the settings ``ACTIVE_LINK_CSS_CLASS`` and ``ACTIVE_LINK_STRICT``.
 
 ===================== ==================================================== =============
 Key                   Description                                          Default Value
@@ -91,7 +85,7 @@ For more usage examples, please check the full documentation at https://django-a
 TODO
 ----
 
-* Accept URLs args in `active_link` tag
+* Accept URLs args in ``active_link`` tag
 * Write the documentation
 
 Running Tests
