@@ -1,6 +1,10 @@
+from django import VERSION as DJANGO_VERSION
 from django import template
 from django.conf import settings
-from django.core.urlresolvers import reverse
+if DJANGO_VERSION[0] == 1 and DJANGO_VERSION[1] <= 9:
+    from django.core.urlresolvers import reverse
+else:
+    from django.urls import reverse
 
 register = template.Library()
 
