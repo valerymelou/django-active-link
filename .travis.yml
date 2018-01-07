@@ -15,16 +15,9 @@ env:
   - TOX_ENV=py35-django-110
   - TOX_ENV=py34-django-110
   - TOX_ENV=py27-django-110
-  - TOX_ENV=py34-django-master
-  - TOX_ENV=py35-django-master
-  - TOX_ENV=py27-django-master
 
 matrix:
   fast_finish: true
-  allow_failures:
-    - env: TOX_ENV=py27-django-master
-    - env: TOX_ENV=py34-django-master
-    - env: TOX_ENV=py35-django-master
 
 # command to install dependencies, e.g. pip install -r requirements.txt --use-mirrors
 install: pip install -r requirements_test.txt
