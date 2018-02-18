@@ -33,7 +33,7 @@ def active_link(context, viewname, css_class=None, strict=None):
     if strict:
         active = request.path == path
     else:
-        active = path in request.path
+        active = request.path.find(path) == 0
     if active:
         return css_class
     return ''
