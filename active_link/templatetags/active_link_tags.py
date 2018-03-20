@@ -5,6 +5,7 @@ if DJANGO_VERSION[0] == 1 and DJANGO_VERSION[1] <= 9:
     from django.core.urlresolvers import reverse
 else:
     from django.urls import reverse
+from django.utils.encoding import escape_uri_path
 
 register = template.Library()
 
@@ -30,10 +31,11 @@ def active_link(context, viewname, css_class=None, strict=None):
         # Can't work without the request object.
         return ''
     path = reverse(viewname)
+    request_path = escape_uri_path(request.path)
     if strict:
-        active = request.path == path
+        active = request_path == path
     else:
-        active = request.path.find(path) == 0
+        active = request_path.find(path) == 0
     if active:
         return css_class
     return ''
