@@ -85,7 +85,6 @@ For more usage examples, please check the full documentation at https://django-a
 TODO
 ----
 
-* Accept URLs args in ``active_link`` tag
 * Write the documentation
 
 Running Tests
