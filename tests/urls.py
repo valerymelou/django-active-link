@@ -9,4 +9,5 @@ urlpatterns = [
     url(r'^simple/$', View.as_view(), name='simple'),
     url(r'^simple/action/$', View.as_view(), name='simple-action'),
     url(r'^other/action/$', View.as_view(), name='other-action'),
+    url(r'^detailed/action/(?P<pk>[0-9]+)/$', View.as_view(), name='detailed-action')
 ]

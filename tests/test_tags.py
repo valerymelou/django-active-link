@@ -90,3 +90,12 @@ class TestActiveLink(TestCase):
         context = Context({'request': self.client.get('/simple/')})
         html = template.render(context)
         assert 'active' not in html
+
+    def test_match_url_with_kwargs(self):
+        template = Template("""
+            {% load active_link_tags %}
+            {% active_link 'detailed-action' pk=12 %}
+        """)
+        context = Context({'request': self.client.get('/detailed/action/12/')})
+        html = template.render(context)
+        assert 'active' in html
