@@ -22,4 +22,9 @@ To add an `active` CSS class to a link when the request path matches a given vie
 
     <a href="{% url 'view-name' %}" class="{% active_link 'view-name' %}">Menu item</a>
 
+If you has a sub-menu or tabs and needs they be active and your parent too, you can use ``||`` to check this:
+
+    <a href="{% url 'view-name' %}" class="{% active_link 'view-name || view-sub-name' %}">Menu Item</a>
+    <a href="{% url 'view-sub-name' %}" class="{% active_link 'view-sub-name' %}">Tab Item</a>
+
 Replace `view-name` with the name of your view (including namespaces).

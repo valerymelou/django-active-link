@@ -26,6 +26,18 @@ class TestActiveLink(TestCase):
         html = template.render(context)
         assert 'active' in html
 
+    def test_match_defaults_with_multiple_view_name(self):
+        template = Template("""
+            {% load active_link_tags %}
+            {% active_link 'simple || multiple' %}
+        """)
+        context0 = Context({'request': self.client.get('/simple/')})
+        context1 = Context({'request': self.client.get('/multiple/')})
+        html0 = template.render(context0)
+        html1 = template.render(context1)
+        assert 'active' in html0
+        assert 'active' in html1
+
     def test_match_not_strict(self):
         template = Template("""
             {% load active_link_tags %}
@@ -39,6 +51,15 @@ class TestActiveLink(TestCase):
         template = Template("""
             {% load active_link_tags %}
             {% active_link 'simple-action' %}
+        """)
+        context = Context({'request': self.client.get('/other/action/')})
+        html = template.render(context)
+        assert 'active' not in html
+
+    def test_no_match_not_strict_with_multiple_view_name(self):
+        template = Template("""
+            {% load active_link_tags %}
+            {% active_link 'simple-action || multiple-action' %}
         """)
         context = Context({'request': self.client.get('/other/action/')})
         html = template.render(context)
