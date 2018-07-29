@@ -5,6 +5,10 @@ Django Active Link
 .. image:: https://badge.fury.io/py/django-active-link.svg
     :target: https://badge.fury.io/py/django-active-link
 
+.. image:: https://pyup.io/repos/github/valerymelou/django-active-link/shield.svg
+     :target: https://pyup.io/repos/github/valerymelou/django-active-link/
+     :alt: Updates
+
 .. image:: https://travis-ci.org/valerymelou/django-active-link.svg?branch=master
     :target: https://travis-ci.org/valerymelou/django-active-link
 
