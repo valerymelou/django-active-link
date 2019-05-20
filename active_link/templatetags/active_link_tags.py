@@ -2,9 +2,9 @@ from django import VERSION as DJANGO_VERSION
 from django import template
 from django.conf import settings
 if DJANGO_VERSION[0] == 1 and DJANGO_VERSION[1] <= 9:
-    from django.core.urlresolvers import reverse
+    from django.core.urlresolvers import reverse, NoReverseMatch
 else:
-    from django.urls import reverse
+    from django.urls import reverse, NoReverseMatch
 from django.utils.encoding import escape_uri_path
 
 register = template.Library()
@@ -33,7 +33,10 @@ def active_link(context, viewnames, css_class=None, strict=None, *args, **kwargs
     active = False
     views = viewnames.split('||')
     for viewname in views:
-        path = reverse(viewname.strip(), args=args, kwargs=kwargs)
+        try:
+            path = reverse(viewname.strip(), args=args, kwargs=kwargs)
+        except NoReverseMatch:
+            continue
         request_path = escape_uri_path(request.path)
         if strict:
             active = request_path == path
