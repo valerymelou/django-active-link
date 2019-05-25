@@ -2,6 +2,9 @@
 dist: xenial
 language: python
 
+python:
+  - "3.6"
+
 env:
   - TOX_ENV=py37-django-111
   - TOX_ENV=py36-django-111
@@ -14,6 +17,10 @@ env:
   - TOX_ENV=py37-django-master
 
 matrix:
+  include:
+    - python: "3.7"
+      dist: xenial
+      sudo: true
   fast_finish: true
   allow_failures:
     - env: TOX_ENV=py36-django-master
