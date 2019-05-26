@@ -35,13 +35,10 @@ if django.VERSION >= (1, 10):
 else:
     MIDDLEWARE_CLASSES = ()
 
-TEMPLATE_DEBUG = True
-TEMPLATE_DIRS = (os.path.join(BASE_DIR, 'templates'), )
-
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': TEMPLATE_DIRS,
+        'DIRS': (os.path.join(BASE_DIR, 'templates'), ),
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -55,7 +52,7 @@ TEMPLATES = [
                 'django.template.context_processors.tz',
                 'django.contrib.messages.context_processors.messages',
             ],
-            'debug': TEMPLATE_DEBUG,
+            'debug': True,
         },
     },
 ]
