@@ -14,10 +14,14 @@ matrix:
       env: TOX_ENV=py35-django-111
     - python: 3.6
       env: TOX_ENV=py35-django-20
+    - python: 3.6
+      env: TOX_ENV=py36-django-master
     - python: 3.7
       env: TOX_ENV=py35-django-111
     - python: 3.7
       env: TOX_ENV=py35-django-20
+    - python: 3.7
+      TOX_ENV=py37-django-master
 
   fast_finish: true
   allow_failures:
