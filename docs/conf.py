@@ -237,7 +237,8 @@ man_pages = [
 #  dir menu entry, description, category)
 texinfo_documents = [
   ('index', 'django-active-link', u'Django Active Link Documentation',
-   u'Valery Melou', 'django-active-link', 'One line description of project.',
+   u'Valery Melou', 'django-active-link',
+   'The best way to highlight active links in your Django project.',
    'Miscellaneous'),
 ]
 

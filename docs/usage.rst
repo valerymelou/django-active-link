@@ -26,4 +26,8 @@ You can even add the active class when the request path matches multiple views. 
 
     <a href="{% url 'view-name' %}" class="{% active_link 'view-name || view-sub-name' %}">Menu Item</a>
 
+You can also match views that take arguments. For example:
+
+    <a href="{% url 'view-name' %}" class="{% active_link 'view-name-with-args' pk=12 slug='simple-slug' %}">Menu item</a>
+
 Replace `view-name` with the name of your view (including namespaces).
