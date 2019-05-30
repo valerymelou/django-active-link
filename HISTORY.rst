@@ -6,6 +6,7 @@ History
 0.1.6 (2019-05-26)
 ++++++++++++++++++
 Important changes
+
 * Silent error when view name not found
 * Update test jobs on Travis CI
 
