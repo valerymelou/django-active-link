@@ -51,7 +51,7 @@ To add an ``active`` CSS class to a link when the request path matches a given v
 
     <a href="{% url 'view-name' %}" class="{% active_link 'view-name' %}">Menu item</a>
 
-You can even add the active class when the request path matches multiple views. Just pass the view names separated by a pipe (||) as first argument to the ``active_link`` tag.
+You can even add the active class when the request path matches multiple views. Just pass the view names separated by a double pipe (||) as first argument to the ``active_link`` tag.
 
 .. code-block:: html
 
