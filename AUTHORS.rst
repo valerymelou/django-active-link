@@ -5,7 +5,7 @@ Credits
 Development Lead
 ----------------
 
-* Valery Melou <valerymelou@gmail.com>
+* Valery Melou <me@valerymelou.com>
 
 Contributors
 ------------
