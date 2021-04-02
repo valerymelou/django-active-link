@@ -11,12 +11,13 @@ register = template.Library()
 
 
 @register.simple_tag(takes_context=True)
-def active_link(context, viewnames, css_class=None, strict=None, *args, **kwargs):
+def active_link(context, viewnames, css_class=None, inactive_class='', strict=None, *args, **kwargs):
     """
     Renders the given CSS class if the request path matches the path of the view.
     :param context: The context where the tag was called. Used to access the request object.
     :param viewnames: The name of the view or views separated by || (include namespaces if any).
     :param css_class: The CSS class to render.
+    :param inactive_class: The CSS class to render if the views is not active.
     :param strict: If True, the tag will perform an exact match with the request path.
     :return:
     """
@@ -48,4 +49,4 @@ def active_link(context, viewnames, css_class=None, strict=None, *args, **kwargs
     if active:
         return css_class
 
-    return ''
+    return inactive_class
