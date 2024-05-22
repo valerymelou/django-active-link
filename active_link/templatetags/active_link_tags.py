@@ -31,6 +31,11 @@ def active_link(context, viewnames, css_class=None, inactive_class='', strict=No
     if request is None:
         # Can't work without the request object.
         return ''
+
+    # Capture the url kwargs to reverse against
+    request_kwargs = request.resolver_match.kwargs
+    kwargs.update(request_kwargs)
+
     active = False
     views = viewnames.split('||')
     for viewname in views:
