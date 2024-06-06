@@ -30,7 +30,13 @@ packages      = [
 
 [tool.poetry.dependencies]
 python = "^3.8"
-pytest = { version = "^8.2.2", optional = true }
+
+
+[tool.poetry.group.test]
+optional = true
+
+[tool.poetry.group.test.dependencies]
+pytest = "*"
 pytest-django = "^4.8.0"
 tox = "^4.15.1"
 
