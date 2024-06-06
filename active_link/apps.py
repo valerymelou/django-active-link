@@ -3,4 +3,4 @@ from django.apps import AppConfig
 
 
 class ActiveLinkConfig(AppConfig):
-    name = 'active_link'
+    name = "active_link"
