@@ -2,7 +2,7 @@ name: CI
 
 on:
   push:
-    branches: [ master, fix_pypi_release ]
+    branches: [ master ]
   pull_request:
     branches:
       - '**'
