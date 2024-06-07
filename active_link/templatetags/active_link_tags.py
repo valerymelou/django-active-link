@@ -8,7 +8,13 @@ register = template.Library()
 
 @register.simple_tag(takes_context=True)
 def active_link(
-    context, viewnames, css_class=None, inactive_class="", strict=None, *args, **kwargs
+    context,
+    viewnames,
+    css_class=None,
+    css_inactive_class="",
+    strict=None,
+    *args,
+    **kwargs
 ):
     """
     Renders the given CSS class if the request path matches the path of the view.
@@ -22,18 +28,20 @@ def active_link(
     if css_class is None:
         css_class = getattr(settings, "ACTIVE_LINK_CSS_CLASS", "active")
 
+    if css_inactive_class == "":
+        css_inactive_class = getattr(settings, "ACTIVE_LINK_CSS_INACTIVE_CLASS", "")
+
     if strict is None:
         strict = getattr(settings, "ACTIVE_LINK_STRICT", False)
 
     request = context.get("request")
     if request is None:
         # Can't work without the request object.
-        return inactive_class
+        return css_inactive_class
 
-    if request.resolver_match is not None:
+    if request.resolver_match.kwargs != {}:
         # Capture the url kwargs to reverse against
-        request_kwargs = request.resolver_match.kwargs
-        kwargs.update(request_kwargs)
+        kwargs.update(request.resolver_match.kwargs)
 
     active = False
     views = viewnames.split("||")
@@ -54,4 +62,4 @@ def active_link(
     if active:
         return css_class
 
-    return inactive_class
+    return css_inactive_class

@@ -7,6 +7,7 @@ History
 +++++++++++++++++
 Breaking changes
 
+* inactive_class renamed to css_inactive_class.
 * Update build tools to be using Poetry.
 * Dropped support for old Django versions, now officially supporting only: Django 4.0, 4.1, 4.2, 5.0.
 * Fixed bug where kwargs was not sent to reverse function.

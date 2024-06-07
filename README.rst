@@ -69,6 +69,16 @@ or:
 
     <a href="{% url 'view-name' %}" class="{% active_link 'view-name' css_class='custom-class' %}">Menu item</a>
 
+You can also define an inactive custom css class, that is triggered when a link is deemed not active:
+
+.. code-block:: html
+    <a href="{% url 'view-name' %}" class="{% active_link 'view-name' 'custom-class' 'not-active' %}">Menu item</a>
+
+or:
+
+.. code-block:: html
+    <a href="{% url 'view-name' %}" class="{% active_link 'view-name' css_class='custom-class' css_inactive_class='not-active' %}">Menu item</a>
+
 By default ``active_link`` will not perform a strict match. If you want to add the ``active`` class only in case of a strict match pass the ``strict`` argument to the tag:
 
 .. code-block:: html
@@ -79,14 +89,15 @@ Replace ``view-name`` with the name of your view (including namespaces).
 
 Settings
 --------
-You can override the default active class and strict mode with the settings ``ACTIVE_LINK_CSS_CLASS`` and ``ACTIVE_LINK_STRICT``.
+You can override the default active class and strict mode with the settings ``ACTIVE_LINK_CSS_CLASS``, ``ACTIVE_LINK_CSS_INACTIVE_CLASS`` and ``ACTIVE_LINK_STRICT``.
 
-===================== ==================================================== =============
-Key                   Description                                          Default Value
-===================== ==================================================== =============
-ACTIVE_LINK_CSS_CLASS Active class to use.                                 `active`
-ACTIVE_LINK_STRICT    Designates whether to perform a strict match or not. `False`
-===================== ==================================================== =============
+============================== ==================================================== =============
+Key                            Description                                          Default Value
+============================== ==================================================== =============
+ACTIVE_LINK_CSS_CLASS          Active class to use.                                 `active`
+ACTIVE_LINK_CSS_INACTIVE_CLASS Inactive class to use.                               ``
+ACTIVE_LINK_STRICT             Designates whether to perform a strict match or not. `False`
+============================== ==================================================== =============
 
 For more usage examples, please check the full documentation at https://django-active-link.readthedocs.io.
 

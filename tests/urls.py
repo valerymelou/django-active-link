@@ -32,6 +32,11 @@ urlpatterns = [
         name="detailed-action",
     ),
     path(
+        r"detailed/action/not-active/<int:pk>/",
+        TemplateView.as_view(template_name="detailed_action_kwargs_not_active.html"),
+        name="detailed-action-not-active",
+    ),
+    path(
         r"detailed/action/multiple/<int:pk>/",
         TemplateView.as_view(template_name="detailed_action_kwargs_multiple.html"),
         name="detailed-action-multiple",
