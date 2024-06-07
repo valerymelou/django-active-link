@@ -1,0 +1,45 @@
+repos:
+  # General checks and trimmers
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0
+    hooks:
+      - id: check-ast  # check if files parses as valid python
+      - id: check-case-conflict  # check for files causing conflict in case-insensitive filesystems
+      - id: check-executables-have-shebangs  # check non-binary executables have a shebang
+      - id: check-merge-conflict  # check for files with merge-conflict-stings
+      - id: debug-statements  # check for debugger imports etc.
+      - id: detect-private-key  # detects the presence of private keys
+      - id: trailing-whitespace  # trims trailing whitespace
+      - id: mixed-line-ending  # Check and fix mixed line ending (only LF for compatibility)
+        args: ["--fix=lf"]
+      - id: check-yaml  # check yaml files for parseable syntax
+      - id: check-toml  # check toml files for parseable syntax
+      - id: check-json  # check json files for parseable syntax
+
+  # Bandit - Security linter
+  - repo: https://github.com/pycqa/bandit
+    rev: 1.7.5
+    hooks:
+      - id: bandit
+        args: ['-iii', '-ll']  # Only report issues with high confidence and medium+ severity
+
+  # Black - Python Code Formatter
+  - repo: https://github.com/psf/black
+    rev: 23.3.0
+    hooks:
+      - id: black
+
+  # isort - Auto sorting of imports for consistency
+  - repo: https://github.com/pycqa/isort
+    rev: 5.12.0
+    hooks:
+      - id: isort
+        args: ["--profile", "black"]
+
+  # flake8 - style guide enforcement
+  - repo: https://github.com/pycqa/flake8
+    rev: 6.0.0
+    hooks:
+      - id: flake8
+        args: ['--ignore=E501']
+exclude: '(docs)/.*'

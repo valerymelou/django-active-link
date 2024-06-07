@@ -96,6 +96,7 @@ TODO
 ----
 
 * Write the documentation
+* Clean repository for unneccesary files
 
 Running Tests
 -------------
@@ -105,8 +106,9 @@ Does the code actually work?
 ::
 
     source <YOURVIRTUALENV>/bin/activate
-    (myenv) $ pip install tox
-    (myenv) $ tox
+    (myenv) $ pip install poetry
+    (myenv) $ poetry install --only test
+    (myenv) $ poetry run tox
 
 Credits
 -------

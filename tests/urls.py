@@ -1,15 +1,14 @@
 # -*- coding: utf-8
-from __future__ import unicode_literals, absolute_import
+from __future__ import absolute_import, unicode_literals
 
-from django.conf.urls import url
+from django.urls import path
 from django.views.generic import View
 
-
 urlpatterns = [
-    url(r'^simple/$', View.as_view(), name='simple'),
-    url(r'^multiple/$', View.as_view(), name='multiple'),
-    url(r'^simple/action/$', View.as_view(), name='simple-action'),
-    url(r'^multiple/action/$', View.as_view(), name='multiple-action'),
-    url(r'^other/action/$', View.as_view(), name='other-action'),
-    url(r'^detailed/action/(?P<pk>[0-9]+)/$', View.as_view(), name='detailed-action')
+    path(r"simple/", View.as_view(), name="simple"),
+    path(r"multiple/", View.as_view(), name="multiple"),
+    path(r"simple/action/", View.as_view(), name="simple-action"),
+    path(r"multiple/action/", View.as_view(), name="multiple-action"),
+    path(r"other/action/", View.as_view(), name="other-action"),
+    path(r"detailed/action/<int:pk>/", View.as_view(), name="detailed-action"),
 ]

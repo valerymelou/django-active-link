@@ -1,0 +1,55 @@
+[tool.poetry]
+name          = "django-active-link"
+version       = "0.2.0"
+description   = "The best and simplest way to highlight active links in your Django app."
+license       = "BSD-3-Clause"
+authors       = [
+    "Valery Melou <valerymelou@gmail.com>",
+]
+maintainers   = [
+    "Frederich Pedersen <frodo@hobbits.dk>",
+]
+readme        = "README.rst"
+repository    = "https://github.com/valerymelou/django-active-link"
+documentation = "https://django-active-link.readthedocs.io/"
+keywords      = ["django", "active", "link", "django-active-link", "sidebar", "navbar"]
+classifiers   = [
+    'Development Status :: 3 - Alpha',
+    'Framework :: Django',
+    'Framework :: Django :: 4.0',
+    'Framework :: Django :: 4.1',
+    'Framework :: Django :: 4.2',
+    'Framework :: Django :: 5.0',
+    'Intended Audience :: Developers',
+    'License :: OSI Approved :: BSD License',
+    'Natural Language :: English',
+]
+packages      = [
+    { include = "active_link" },
+]   
+
+[tool.poetry.dependencies]
+python = "^3.8"
+
+
+[tool.poetry.group.test]
+optional = true
+
+[tool.poetry.group.test.dependencies]
+pytest = "*"
+pytest-django = "^4.8.0"
+tox = "^4.15.1"
+
+[tool.poetry.extras]
+test = ["pytest"]
+
+[tool.poetry.urls]
+"Bug Tracker" = "https://github.com/valerymelou/django-active-link/issues"
+"codecov"     = "https://codecov.io/gh/valerymelou/django-active-link"
+
+[build-system]
+requires      = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "tests.settings"
