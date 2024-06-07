@@ -3,8 +3,6 @@ from __future__ import absolute_import, unicode_literals
 
 import os
 
-import django
-
 BASE_DIR = os.path.dirname(__file__)
 
 DEBUG = True
@@ -31,10 +29,7 @@ INSTALLED_APPS = [
 
 SITE_ID = 1
 
-if django.VERSION >= (1, 10):
-    MIDDLEWARE = ()
-else:
-    MIDDLEWARE_CLASSES = ()
+MIDDLEWARE_CLASSES = ()
 
 TEMPLATES = [
     {
@@ -46,6 +41,7 @@ TEMPLATES = [
                 # Insert your TEMPLATE_CONTEXT_PROCESSORS here or use this
                 # list if you haven't customized them:
                 "django.contrib.auth.context_processors.auth",
+                "django.template.context_processors.request",
                 "django.template.context_processors.debug",
                 "django.template.context_processors.i18n",
                 "django.template.context_processors.media",

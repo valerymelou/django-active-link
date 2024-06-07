@@ -26,7 +26,7 @@ classifiers   = [
 ]
 packages      = [
     { include = "active_link" },
-]   
+]
 
 [tool.poetry.dependencies]
 python = "^3.8"
