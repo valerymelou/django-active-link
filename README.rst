@@ -90,7 +90,7 @@ ACTIVE_LINK_STRICT    Designates whether to perform a strict match or not. `Fals
 
 For more usage examples, please check the full documentation at https://django-active-link.readthedocs.io.
 
-**IMPORTANT**: Django Active Link requires that the current request object is available in your template's context. This means you must be using a `RequestContext` when rendering your template, and `django.core.context_processors.request` must be in your `TEMPLATE_CONTEXT_PROCESSORS` setting. See https://docs.djangoproject.com/en/dev/ref/templates/api/#subclassing-context-requestcontext for more information.
+**IMPORTANT**: Django Active Link requires that the current request object is available in your template's context. This means you must be using a `RequestContext` when rendering your template, and `django.template.context_processors.request` must be in your `TEMPLATE_CONTEXT_PROCESSORS` setting. See https://docs.djangoproject.com/en/dev/ref/templates/api/#subclassing-context-requestcontext for more information.
 
 TODO
 ----
