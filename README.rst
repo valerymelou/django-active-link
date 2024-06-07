@@ -97,7 +97,7 @@ You can override the default active class and strict mode with the settings ``AC
 Key                            Description                                          Default Value
 ============================== ==================================================== =============
 ACTIVE_LINK_CSS_CLASS          Active class to use.                                 `active`
-ACTIVE_LINK_CSS_INACTIVE_CLASS Inactive class to use.                               
+ACTIVE_LINK_CSS_INACTIVE_CLASS Inactive class to use.
 ACTIVE_LINK_STRICT             Designates whether to perform a strict match or not. `False`
 ============================== ==================================================== =============
 
