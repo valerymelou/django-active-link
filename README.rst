@@ -72,11 +72,13 @@ or:
 You can also define an inactive custom css class, that is triggered when a link is deemed not active:
 
 .. code-block:: html
+    
     <a href="{% url 'view-name' %}" class="{% active_link 'view-name' 'custom-class' 'not-active' %}">Menu item</a>
 
 or:
 
 .. code-block:: html
+
     <a href="{% url 'view-name' %}" class="{% active_link 'view-name' css_class='custom-class' css_inactive_class='not-active' %}">Menu item</a>
 
 By default ``active_link`` will not perform a strict match. If you want to add the ``active`` class only in case of a strict match pass the ``strict`` argument to the tag:
