@@ -72,7 +72,7 @@ or:
 You can also define an inactive custom css class, that is triggered when a link is deemed not active:
 
 .. code-block:: html
-    
+
     <a href="{% url 'view-name' %}" class="{% active_link 'view-name' 'custom-class' 'not-active' %}">Menu item</a>
 
 or:
@@ -97,7 +97,7 @@ You can override the default active class and strict mode with the settings ``AC
 Key                            Description                                          Default Value
 ============================== ==================================================== =============
 ACTIVE_LINK_CSS_CLASS          Active class to use.                                 `active`
-ACTIVE_LINK_CSS_INACTIVE_CLASS Inactive class to use.                               ``
+ACTIVE_LINK_CSS_INACTIVE_CLASS Inactive class to use.                               
 ACTIVE_LINK_STRICT             Designates whether to perform a strict match or not. `False`
 ============================== ==================================================== =============
 
