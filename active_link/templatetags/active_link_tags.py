@@ -34,7 +34,7 @@ def active_link(
     request = context.get("request")
     if request is None:
         # Can't work without the request object.
-        return ""
+        return inactive_class
 
     if request.resolver_match is not None:
         # Capture the url kwargs to reverse against
