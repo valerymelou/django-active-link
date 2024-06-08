@@ -3,9 +3,14 @@
 History
 -------
 
+0.2.1 (2024-06-07)
++++++++++++++++++
+Important changes
+
+* inactive_class renamed to css_inactive_class.
+
 0.2.0 (2024-06-06)
 +++++++++++++++++
-Breaking changes
 
 * Update build tools to be using Poetry.
 * Dropped support for old Django versions, now officially supporting only: Django 4.0, 4.1, 4.2, 5.0.

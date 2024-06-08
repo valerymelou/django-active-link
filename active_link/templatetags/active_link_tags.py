@@ -8,19 +8,28 @@ register = template.Library()
 
 @register.simple_tag(takes_context=True)
 def active_link(
-    context, viewnames, css_class=None, inactive_class="", strict=None, *args, **kwargs
+    context,
+    viewnames,
+    css_class=None,
+    css_inactive_class="",
+    strict=None,
+    *args,
+    **kwargs
 ):
     """
     Renders the given CSS class if the request path matches the path of the view.
     :param context: The context where the tag was called. Used to access the request object.
     :param viewnames: The name of the view or views separated by || (include namespaces if any).
-    :param css_class: The CSS class to render.
-    :param inactive_class: The CSS class to render if the views is not active.
+    :param css_class: The CSS class to render if the view is active.
+    :param css_inactive_class: The CSS class to render if the view is not active.
     :param strict: If True, the tag will perform an exact match with the request path.
     :return:
     """
     if css_class is None:
         css_class = getattr(settings, "ACTIVE_LINK_CSS_CLASS", "active")
+
+    if css_inactive_class == "":
+        css_inactive_class = getattr(settings, "ACTIVE_LINK_CSS_INACTIVE_CLASS", "")
 
     if strict is None:
         strict = getattr(settings, "ACTIVE_LINK_STRICT", False)
@@ -28,12 +37,11 @@ def active_link(
     request = context.get("request")
     if request is None:
         # Can't work without the request object.
-        return inactive_class
+        return css_inactive_class
 
-    if request.resolver_match is not None:
+    if request.resolver_match.kwargs != {}:
         # Capture the url kwargs to reverse against
-        request_kwargs = request.resolver_match.kwargs
-        kwargs.update(request_kwargs)
+        kwargs.update(request.resolver_match.kwargs)
 
     active = False
     views = viewnames.split("||")
@@ -54,4 +62,4 @@ def active_link(
     if active:
         return css_class
 
-    return inactive_class
+    return css_inactive_class

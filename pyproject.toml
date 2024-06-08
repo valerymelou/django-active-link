@@ -1,6 +1,6 @@
 [tool.poetry]
 name          = "django-active-link"
-version       = "0.2.0"
+version       = "0.2.1"
 description   = "The best and simplest way to highlight active links in your Django app."
 license       = "BSD-3-Clause"
 authors       = [
