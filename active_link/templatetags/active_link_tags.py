@@ -20,8 +20,8 @@ def active_link(
     Renders the given CSS class if the request path matches the path of the view.
     :param context: The context where the tag was called. Used to access the request object.
     :param viewnames: The name of the view or views separated by || (include namespaces if any).
-    :param css_class: The CSS class to render.
-    :param css_inactive_class: The CSS class to render if the views is not active.
+    :param css_class: The CSS class to render if the view is active.
+    :param css_inactive_class: The CSS class to render if the view is not active.
     :param strict: If True, the tag will perform an exact match with the request path.
     :return:
     """
