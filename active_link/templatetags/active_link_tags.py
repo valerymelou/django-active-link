@@ -39,23 +39,24 @@ def active_link(
         # Can't work without the request object.
         return css_inactive_class
 
-    if request.resolver_match.kwargs != {}:
-        # Capture the url kwargs to reverse against
-        kwargs.update(request.resolver_match.kwargs)
+    resolver_kwargs = getattr(request, 'resolver_match', None)
+    resolver_kwargs = getattr(resolver_kwargs, 'kwargs', {}) if resolver_kwargs else {}
+    kwargs.update(resolver_kwargs)
 
     active = False
     views = viewnames.split("||")
+    request_path = escape_uri_path(request.path)
 
     for viewname in views:
         try:
             path = reverse(viewname.strip(), args=args, kwargs=kwargs)
         except NoReverseMatch:
             continue
-        request_path = escape_uri_path(request.path)
+        
         if strict:
             active = request_path == path
         else:
-            active = request_path.find(path) == 0
+            active = request_path.startswith(path) or path.startswith(request_path)
         if active:
             break
 
