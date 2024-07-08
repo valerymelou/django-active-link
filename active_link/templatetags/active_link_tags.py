@@ -39,8 +39,10 @@ def active_link(
         # Can't work without the request object.
         return css_inactive_class
 
-    resolver_kwargs = getattr(request, 'resolver_match', None)
-    resolver_kwargs = getattr(resolver_kwargs, 'kwargs', {}) if resolver_kwargs else {}
+    resolver_kwargs = {}
+    if hasattr(request, 'resolver_match') and hasattr(request.resolver_match, 'kwargs'):
+        resolver_kwargs = request.resolver_match.kwargs
+
     kwargs.update(resolver_kwargs)
 
     active = False
