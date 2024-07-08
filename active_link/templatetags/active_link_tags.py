@@ -40,21 +40,21 @@ def active_link(
         return css_inactive_class
 
     resolver_kwargs = {}
-    if hasattr(request, 'resolver_match') and hasattr(request.resolver_match, 'kwargs'):
+    if hasattr(request, "resolver_match") and hasattr(request.resolver_match, "kwargs"):
         resolver_kwargs = request.resolver_match.kwargs
-
+    
     kwargs.update(resolver_kwargs)
 
     active = False
     views = viewnames.split("||")
     request_path = escape_uri_path(request.path)
-
+    
     for viewname in views:
         try:
             path = reverse(viewname.strip(), args=args, kwargs=kwargs)
         except NoReverseMatch:
             continue
-        
+
         if strict:
             active = request_path == path
         else:
