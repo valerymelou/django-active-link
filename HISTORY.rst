@@ -3,6 +3,17 @@
 History
 -------
 
+0.2.2 (2024-07-08)
++++++++++++++++++
+Minor changes
+
+* Matches more views
+* Code improvements
+
+Important change
+
+* Test coverage dropped to 99.07% from 100%. This is already scheduled to be fixed.
+
 0.2.1 (2024-06-07)
 +++++++++++++++++
 Important changes
