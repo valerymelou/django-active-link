@@ -1,7 +1,7 @@
 repos:
   # General checks and trimmers
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.4.0
+    rev: v6.0.0
     hooks:
       - id: check-ast  # check if files parses as valid python
       - id: check-case-conflict  # check for files causing conflict in case-insensitive filesystems
@@ -18,27 +18,27 @@ repos:
 
   # Bandit - Security linter
   - repo: https://github.com/pycqa/bandit
-    rev: 1.7.5
+    rev: 1.8.6
     hooks:
       - id: bandit
         args: ['-iii', '-ll']  # Only report issues with high confidence and medium+ severity
 
   # Black - Python Code Formatter
   - repo: https://github.com/psf/black
-    rev: 23.3.0
+    rev: 25.11.0
     hooks:
       - id: black
 
   # isort - Auto sorting of imports for consistency
   - repo: https://github.com/pycqa/isort
-    rev: 5.12.0
+    rev: 7.0.0
     hooks:
       - id: isort
         args: ["--profile", "black"]
 
   # flake8 - style guide enforcement
   - repo: https://github.com/pycqa/flake8
-    rev: 6.0.0
+    rev: 7.3.0
     hooks:
       - id: flake8
         args: ['--ignore=E501']
