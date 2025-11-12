@@ -43,7 +43,8 @@ def active_link(
     if hasattr(request, "resolver_match") and hasattr(request.resolver_match, "kwargs"):
         resolver_kwargs = request.resolver_match.kwargs
 
-    kwargs.update(resolver_kwargs)
+    # Use resolver_kwargs as defaults, but explicitly provided kwargs (like pk) take precedence
+    kwargs = {**resolver_kwargs, **kwargs}
 
     active = False
     views = viewnames.split("||")

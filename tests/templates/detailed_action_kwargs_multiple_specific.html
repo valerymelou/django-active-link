@@ -1,0 +1,15 @@
+{% load active_link_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiple specific links test</title>
+</head>
+<body>
+    <div id="link-pk-1" class="{% active_link 'detailed-action-multiple-specific' pk=1 %}">Link to pk=1</div>
+    <div id="link-pk-2" class="{% active_link 'detailed-action-multiple-specific' pk=2 %}">Link to pk=2</div>
+    <div id="link-pk-3" class="{% active_link 'detailed-action-multiple-specific' pk=3 %}">Link to pk=3</div>
+</body>
+</html>
+

@@ -101,3 +101,23 @@ class TestActiveLink(TestCase):
         # Should render the inactive class without throwing an error
         self.assertIn('class="not-active"', html)
         self.assertNotIn('class="active"', html)
+
+    def test_multiple_links_with_specific_kwargs(self):
+        """
+        Test that multiple active_link tags on the same page with different
+        explicit kwargs are evaluated independently.
+
+        When viewing a page with the URL /detailed/action/multiple-specific/2/,
+        and the page has `active_link` tags for pk=1, pk=2, and pk=3.
+        Only the link with pk=2 should be active. The resolver_kwargs
+        from the current URL should serve as defaults but not override the explicit
+        pk values.
+        """
+        content = self.reverse_helper("detailed-action-multiple-specific", {"pk": 2})
+
+        # Only the link with pk=2 should be active
+        self.assertIn('id="link-pk-2" class="active"', content)
+
+        # Links with pk=1 and pk=3 should NOT be active
+        self.assertNotIn('id="link-pk-1" class="active"', content)
+        self.assertNotIn('id="link-pk-3" class="active"', content)
