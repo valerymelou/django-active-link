@@ -108,10 +108,9 @@ class TestActiveLink(TestCase):
         explicit kwargs are evaluated independently.
 
         When viewing a page with the URL /detailed/action/multiple-specific/2/,
-        and the page has `active_link` tags for pk=1, pk=2, and pk=3.
-        Only the link with pk=2 should be active. The resolver_kwargs
-        from the current URL should serve as defaults but not override the explicit
-        pk values.
+        and the page has `active_link` tags for pk=1, pk=2, and pk=3. Only the
+        link with pk=2 should be active. The resolver_kwargs from the current
+        URL should serve as defaults but not override the explicit pk values.
         """
         content = self.reverse_helper("detailed-action-multiple-specific", {"pk": 2})
 
