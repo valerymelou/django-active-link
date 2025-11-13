@@ -15,3 +15,4 @@ Contributors
 ------------
 
 * Paulo Reis <paulovitin@gmail.com>
+* Mike Nitchie <mikenitchie@gmail.com>

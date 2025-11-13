@@ -3,6 +3,20 @@
 History
 -------
 
+0.3.0 (2025-11-13)
++++++++++++++++++
+Breaking changes
+
+* Dropped support for the following Django versions: 4.0, 4.1, 5.0
+* Added support for the following Django versions: 5.1, 5.2
+
+* Dropped support for the following Python versions: 3.8, 3.9
+* Added support for the following Python versions: 3.13, 3.14
+
+Minor changes
+
+* Fixed a bug where multiple active_link tags would trigger each other, even when they had different kwargs (like pk).
+
 0.2.2 (2024-07-08)
 +++++++++++++++++
 Minor changes

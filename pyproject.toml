@@ -1,6 +1,6 @@
 [tool.poetry]
 name          = "django-active-link"
-version       = "0.2.2"
+version       = "0.3.0"
 description   = "The best and simplest way to highlight active links in your Django app."
 license       = "BSD-3-Clause"
 authors       = [
@@ -16,10 +16,9 @@ keywords      = ["django", "active", "link", "django-active-link", "sidebar", "n
 classifiers   = [
     'Development Status :: 3 - Alpha',
     'Framework :: Django',
-    'Framework :: Django :: 4.0',
-    'Framework :: Django :: 4.1',
     'Framework :: Django :: 4.2',
-    'Framework :: Django :: 5.0',
+    'Framework :: Django :: 5.1',
+    'Framework :: Django :: 5.2',
     'Intended Audience :: Developers',
     'License :: OSI Approved :: BSD License',
     'Natural Language :: English',
@@ -29,7 +28,7 @@ packages      = [
 ]
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = "^3.10"
 
 
 [tool.poetry.group.test]
@@ -37,8 +36,8 @@ optional = true
 
 [tool.poetry.group.test.dependencies]
 pytest = "*"
-pytest-django = "^4.8.0"
-tox = "^4.15.1"
+pytest-django = "^4.11.1"
+tox = "^4.32.0"
 
 [tool.poetry.extras]
 test = ["pytest"]
