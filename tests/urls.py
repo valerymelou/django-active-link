@@ -41,4 +41,11 @@ urlpatterns = [
         TemplateView.as_view(template_name="detailed_action_kwargs_multiple.html"),
         name="detailed-action-multiple",
     ),
+    path(
+        r"detailed/action/multiple-specific/<int:pk>/",
+        TemplateView.as_view(
+            template_name="detailed_action_kwargs_multiple_specific.html"
+        ),
+        name="detailed-action-multiple-specific",
+    ),
 ]
