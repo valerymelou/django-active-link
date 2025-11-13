@@ -35,28 +35,23 @@ jobs:
       matrix:
         os: [ubuntu-latest]
         python-version:
-          - "3.8"
-          - "3.9"
           - "3.10"
           - "3.11"
           - "3.12"
+          - "3.13"
+          - "3.14"
         tox-env:
-          - "django-40"
-          - "django-41"
           - "django-42"
-          - "django-50"
+          - "django-51"
+          - "django-52"
 
         exclude:
-          - python-version: "3.11"
-            tox-env: "django-40"
-          - python-version: "3.12"
-            tox-env: "django-40"
-          - python-version: "3.12"
-            tox-env: "django-41"
-          - python-version: "3.8"
-            tox-env: "django-50"
-          - python-version: "3.9"
-            tox-env: "django-50"
+          - python-version: "3.13"
+            tox-env: "django-42"
+          - python-version: "3.14"
+            tox-env: "django-42"
+          - python-version: "3.14"
+            tox-env: "django-51"
 
     steps:
       - uses: actions/checkout@v2
