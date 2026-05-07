@@ -13,9 +13,9 @@ jobs:
     name: Pre-commit
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
       - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405
         with:
           python-version: 3.11
 
@@ -41,22 +41,19 @@ jobs:
           - "3.13"
           - "3.14"
         tox-env:
-          - "django-42"
-          - "django-51"
           - "django-52"
+          - "django-60"
 
         exclude:
-          - python-version: "3.13"
-            tox-env: "django-42"
-          - python-version: "3.14"
-            tox-env: "django-42"
-          - python-version: "3.14"
-            tox-env: "django-51"
+          - python-version: "3.10"
+            tox-env: "django-60"
+          - python-version: "3.11"
+            tox-env: "django-60"
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
       - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405
         with:
           python-version: ${{ matrix.python-version }}
 
@@ -88,9 +85,9 @@ jobs:
     permissions:
       id-token: write
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
       - name: Set up Python 3.11
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405
         with:
           python-version: 3.11
 
