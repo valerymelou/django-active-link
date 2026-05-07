@@ -14,7 +14,7 @@ def active_link(
     css_inactive_class="",
     strict=None,
     *args,
-    **kwargs
+    **kwargs,
 ):
     """
     Renders the given CSS class if the request path matches the path of the view.

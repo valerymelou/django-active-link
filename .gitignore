@@ -46,6 +46,3 @@ output/*/index.html
 # Sphinx
 docs/_build
 venv
-
-# Poetry
-poetry.lock

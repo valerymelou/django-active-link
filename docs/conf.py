@@ -23,7 +23,7 @@ cwd = os.getcwd()
 parent = os.path.dirname(cwd)
 sys.path.append(parent)
 
-import active_link
+import src.active_link as active_link
 
 # -- General configuration -----------------------------------------------------
 
