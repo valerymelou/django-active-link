@@ -119,9 +119,10 @@ Does the code actually work?
 ::
 
     source <YOURVIRTUALENV>/bin/activate
-    (myenv) $ pip install poetry
-    (myenv) $ poetry install --only test
-    (myenv) $ poetry run tox
+    (myenv) $ pip install uv
+    (myenv) $ uv sync --locked --all-extras --dev
+    (myenv) $ uv pip install .
+    (myenv) $ uv run pytest
 
 Credits
 -------

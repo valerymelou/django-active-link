@@ -5,7 +5,6 @@ from django.utils.encoding import escape_uri_path
 
 register = template.Library()
 
-
 @register.simple_tag(takes_context=True)
 def active_link(
     context,
@@ -14,7 +13,7 @@ def active_link(
     css_inactive_class="",
     strict=None,
     *args,
-    **kwargs
+    **kwargs,
 ):
     """
     Renders the given CSS class if the request path matches the path of the view.
